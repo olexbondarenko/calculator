@@ -180,7 +180,7 @@ export default {
 // calculator styles
 .calculator {
   width: 100%;
-  padding: 82px 16px;
+  padding: 32px 16px;
   background: #ffffff;
 
   &__head {

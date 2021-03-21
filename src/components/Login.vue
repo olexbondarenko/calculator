@@ -64,7 +64,7 @@ export default {
 
 .login {
   width: 100%;
-  padding: 62px 16px 36px;
+  padding: 32px 16px;
   &__title {
     margin-bottom: 28px;
     font-weight: 600;
