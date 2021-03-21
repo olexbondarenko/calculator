@@ -48,13 +48,13 @@ export default {
 @import "@/assets/scss/_reset";
 @import "@/assets/scss/_variables";
 
-html,
-body {
+html {
   height: 100%;
 }
 
 body {
   position: relative;
+  min-height: 100vh;
   margin: 0;
   background: #ffffff;
   font-family: "Montserrat", sans-serif;

@@ -14,7 +14,7 @@
         <input
           id="user-email"
           type="text"
-          v-model="emailOrPhone"
+          v-model="emailPhone"
           placeholder=""
         />
       </div>
@@ -41,13 +41,15 @@ export default {
   props: ["amount", "days"],
   data() {
     return {
-      emailOrPhone: "",
+      emailPhone: "",
       password: "",
     };
   },
   methods: {
     signIn() {
       let data = {
+        amount: this.amount,
+        days: this.days,
         emailPhone: this.emailPhone,
         password: this.password,
       };

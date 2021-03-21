@@ -17,16 +17,12 @@
             </div>
             <div class="range__slider">
               <RangeSlider
-                :speed="0"
                 :min="amount.min"
                 :max="amount.max"
                 :step="amount.step"
+                :no-popover="true"
+                :no-calibration="true"
                 v-model="amount.value"
-                :style="ragseStyles.mailStyle"
-                :bg-style="ragseStyles.bgStyle"
-                :slider-style="ragseStyles.sliderStyle"
-                :process-style="ragseStyles.processStyle"
-                :tooltip-style="ragseStyles.tooltipStyle"
               />
             </div>
             <div class="range__values">
@@ -46,16 +42,12 @@
             </div>
             <div class="range__slider">
               <RangeSlider
-                :speed="0"
                 :min="days.min"
                 :max="days.max"
                 :step="days.step"
+                :no-popover="true"
+                :no-calibration="true"
                 v-model="days.value"
-                :style="ragseStyles.mailStyle"
-                :bg-style="ragseStyles.bgStyle"
-                :slider-style="ragseStyles.sliderStyle"
-                :process-style="ragseStyles.processStyle"
-                :tooltip-style="ragseStyles.tooltipStyle"
               />
             </div>
             <div class="range__values">
@@ -97,8 +89,8 @@
 </template>
 
 <script>
-import "vue-range-component/dist/vue-range-slider.css";
-import RangeSlider from "vue-range-component";
+import RangeSlider from "v-range-slider";
+import "v-range-slider/dist/v-range-slider.css";
 
 export default {
   name: "Calculator",
@@ -179,36 +171,11 @@ export default {
       this.$emit("showLoginForm", { amount, days });
     },
   },
-  created() {
-    // range slider listeners fix
-    RangeSlider.methods.handleKeyup = () => {};
-    RangeSlider.methods.handleKeydown = () => {};
-  },
 };
 </script>
 
 <style lang="scss">
 @import "@/assets/scss/_variables";
-
-// change default tooltip
-.vue-range-slider {
-  &.slider-component {
-    .slider {
-      background: #c5e7bf;
-      border-radius: 2px;
-      &-dot {
-        border: 2px solid #3dae2b;
-        box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.15);
-      }
-      .slider {
-        &-process {
-          background: #3dae2b;
-          border-radius: 2px;
-        }
-      }
-    }
-  }
-}
 
 // calculator styles
 .calculator {
@@ -289,7 +256,7 @@ export default {
   &__head {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 7px;
     &-title {
       min-width: 52px;
       margin-right: 16px;
@@ -313,6 +280,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: -7px;
     &-item {
       font-size: 12px;
       line-height: 16px;
@@ -320,6 +288,28 @@ export default {
     }
   }
 }
+
+// change default tooltip
+.range-slider {
+  display: block;
+  width: 100%;
+  padding: 0;
+  &-rail {
+    background: #c5e7bf;
+    border-radius: 2px;
+  }
+  &-knob {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3dae2b;
+    box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  &-fill {
+    background: #3dae2b;
+    border-radius: 2px;
+  }
+}
+
 @media screen and (min-width: 835px) {
   .calculator {
     max-width: 836px;
@@ -347,7 +337,7 @@ export default {
       max-width: 416px;
     }
     &__ranges {
-      margin-bottom: 25px;
+      margin-bottom: 24px;
     }
     .range {
       margin-bottom: 31px;
@@ -375,12 +365,15 @@ export default {
     padding: 0;
     box-shadow: none;
     &__head {
-      margin-bottom: 18px;
+      margin-bottom: 11px;
       &-sum {
         &-value {
           padding-bottom: 2px;
         }
       }
+    }
+    &__values {
+      margin-top: -5px;
     }
   }
 }
